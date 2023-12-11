@@ -1,5 +1,4 @@
 import 'package:flutter_qa/constants/breakpoints.dart';
-import 'package:flutter_qa/features/account/account_screen.dart';
 import 'package:flutter_qa/features/orders_list/orders_list_screen.dart';
 import 'package:flutter_qa/features/sign_in/email_password_sign_in_screen.dart';
 import 'package:flutter_qa/features/sign_in/email_password_sign_in_state.dart';
@@ -9,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_qa/common_widgets/action_text_button.dart';
 import 'package:flutter_qa/features/home_app_bar/more_menu_button.dart';
 import 'package:flutter_qa/features/home_app_bar/shopping_cart_icon.dart';
+import 'package:flutter_qa/route/route_app.dart';
+import 'package:go_router/go_router.dart';
+
 
 /// Custom [AppBar] widget that is reused by the [ProductsListScreen] and
 /// [ProductScreen].
@@ -48,35 +50,18 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             ActionTextButton(
               key: MoreMenuButton.ordersKey,
               text: 'Orders'.hardcoded,
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  fullscreenDialog: true,
-                  builder: (_) => const OrdersListScreen(),
-                ),
-              ),
+              onPressed: () =>context.goNamed(RouteApp.order.name)
             ),
             ActionTextButton(
               key: MoreMenuButton.accountKey,
               text: 'Account'.hardcoded,
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  fullscreenDialog: true,
-                  builder: (_) => const AccountScreen(),
-                ),
-              ),
+              onPressed: () => context.goNamed(RouteApp.accountScreen.name)
             ),
           ] else
             ActionTextButton(
               key: MoreMenuButton.signInKey,
               text: 'Sign In'.hardcoded,
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  fullscreenDialog: true,
-                  builder: (_) => const EmailPasswordSignInScreen(
-                    formType: EmailPasswordSignInFormType.signIn,
-                  ),
-                ),
-              ),
+              onPressed: () => context.goNamed(RouteApp.signIn.name)
             )
         ],
       );

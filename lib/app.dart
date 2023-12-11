@@ -1,15 +1,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_qa/features/products_list/products_list_screen.dart';
+import 'package:flutter_qa/route/route_app.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
-      home: const ProductsListScreen(),
+      routerConfig: route,
+     // home: const ProductsListScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // * Use this to toggle Material 3 (defaults to true since Flutter 3.16)

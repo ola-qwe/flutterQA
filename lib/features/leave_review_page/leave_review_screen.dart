@@ -7,6 +7,7 @@ import 'package:flutter_qa/common_widgets/primary_button.dart';
 import 'package:flutter_qa/constants/app_sizes.dart';
 import 'package:flutter_qa/features/product_page/product_reviews/product_rating_bar.dart';
 import 'package:flutter_qa/models/review.dart';
+import 'package:go_router/go_router.dart';
 
 class LeaveReviewScreen extends StatelessWidget {
   const LeaveReviewScreen({Key? key, required this.productId})
@@ -65,7 +66,7 @@ class _LeaveReviewFormState extends State<LeaveReviewForm> {
       // TODO: Submit review
       showNotImplementedAlertDialog(context: context);
     }
-    Navigator.of(context).pop();
+    context.pop();
   }
 
   @override

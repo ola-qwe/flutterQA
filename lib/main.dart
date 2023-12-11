@@ -27,7 +27,7 @@ void registerErrorHandlers() {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text('An error occurred'),
+        title: const Text('An error occurred'),
       ),
       body: Center(child: Text(details.toString())),
     );

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_qa/common_widgets/action_text_button.dart';
 import 'package:flutter_qa/common_widgets/responsive_center.dart';
 import 'package:flutter_qa/constants/app_sizes.dart';
-import 'package:flutter_qa/localization/string_hardcoded.dart';
+import 'package:go_router/go_router.dart';
 
 /// Simple account screen showing some user info and a logout button.
 class AccountScreen extends StatelessWidget {
@@ -20,7 +20,7 @@ class AccountScreen extends StatelessWidget {
             text: 'Logout'.hardcoded,
             onPressed: () async {
               // TODO: Sign out
-              Navigator.of(context).pop();
+              context.pop();
             },
           ),
         ],
