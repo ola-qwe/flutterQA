@@ -1,8 +1,8 @@
-import 'package:flutter_qa/models/item.dart';
+import 'package:flutter_qa/features/cart/presentation/shopping_cart/shopping_cart_item.dart';
+import 'package:flutter_qa/features/cart/presentation/shopping_cart/shopping_cart_items_builder.dart';
+import 'package:flutter_qa/features/cart/domain/item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_qa/features/checkout/payment/payment_button.dart';
-import 'package:flutter_qa/features/shopping_cart/shopping_cart_item.dart';
-import 'package:flutter_qa/features/shopping_cart/shopping_cart_items_builder.dart';
 
 /// Payment screen showing the items in the cart (with read-only quantities) and
 /// a button to checkout.

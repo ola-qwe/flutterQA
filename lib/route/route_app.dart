@@ -1,18 +1,17 @@
-import 'dart:js';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_qa/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart';
+import 'package:flutter_qa/features/authentication/presentation/sign_in/email_password_sign_in_state.dart';
+import 'package:flutter_qa/features/cart/presentation/shopping_cart/shopping_cart_screen.dart';
 import 'package:flutter_qa/features/checkout/checkout_screen.dart';
-import 'package:flutter_qa/features/leave_review_page/leave_review_screen.dart';
+import 'package:flutter_qa/features/orders/presentation/orders_list/orders_list_screen.dart';
+import 'package:flutter_qa/features/review/presentation/leave_review_screen.dart';
 import 'package:flutter_qa/features/not_found/not_found_screen.dart';
-import 'package:flutter_qa/features/product_page/product_screen.dart';
-import 'package:flutter_qa/features/products_list/products_list_screen.dart';
-import 'package:flutter_qa/features/shopping_cart/shopping_cart_screen.dart';
-import 'package:flutter_qa/features/sign_in/email_password_sign_in_screen.dart';
+import 'package:flutter_qa/features/products/presentation/product_page/product_screen.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/account/account_screen.dart';
-import '../features/orders_list/orders_list_screen.dart';
-import '../features/sign_in/email_password_sign_in_state.dart';
+import '../features/authentication/presentation/account/account_screen.dart';
+import '../features/products/presentation/products_list/products_list_screen.dart';
 
 enum RouteApp {
   cart,

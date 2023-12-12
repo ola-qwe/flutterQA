@@ -1,6 +1,6 @@
 
 import 'package:flutter_qa/constants/app_strings.dart';
-import 'package:flutter_qa/models/product.dart';
+import 'package:flutter_qa/features/products/domain/product.dart';
 
 /// Test products to be used until a data source is implemented
 const kTestProducts = [

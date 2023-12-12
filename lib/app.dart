@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_qa/features/products_list/products_list_screen.dart';
 import 'package:flutter_qa/route/route_app.dart';
 
 class MyApp extends StatelessWidget {
