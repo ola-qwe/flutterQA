@@ -1,6 +1,9 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_qa/features/checkout/checkout_screen.dart';
 import 'package:flutter_qa/features/leave_review_page/leave_review_screen.dart';
+import 'package:flutter_qa/features/not_found/not_found_screen.dart';
 import 'package:flutter_qa/features/product_page/product_screen.dart';
 import 'package:flutter_qa/features/products_list/products_list_screen.dart';
 import 'package:flutter_qa/features/shopping_cart/shopping_cart_screen.dart';
@@ -100,4 +103,5 @@ final route =
               ),
             ]),
       ])
-]);
+],
+    errorBuilder:(context,state)=>NotFoundScreen() );
