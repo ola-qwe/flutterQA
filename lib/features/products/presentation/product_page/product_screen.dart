@@ -1,3 +1,4 @@
+import 'package:flutter_qa/common_widgets/async_value_widget.dart';
 import 'package:flutter_qa/constants/test_products.dart';
 import 'package:flutter_qa/features/cart/presentation/add_to_cart/add_to_cart_widget.dart';
 import 'package:flutter_qa/features/not_found/empty_placeholder_widget.dart';
@@ -12,34 +13,38 @@ import 'package:flutter_qa/common_widgets/responsive_center.dart';
 import 'package:flutter_qa/common_widgets/responsive_two_column_layout.dart';
 import 'package:flutter_qa/constants/app_sizes.dart';
 import 'package:flutter_qa/features/products/domain/product.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../home_app_bar/home_app_bar.dart';
 import 'leave_review_action.dart';
 
 /// Shows the product page for a given product ID.
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends ConsumerWidget {
   const ProductScreen({Key? key, required this.productId}) : super(key: key);
   final String productId;
 
   @override
-  Widget build(BuildContext context) {
-    final product =
-        ProductsRepository.instance.getProductById(productId);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final productVal = ref.watch(productDetailsStreamProvider(productId));
     return Scaffold(
       appBar: const HomeAppBar(),
-      body: product == null
+      body:
+      AsyncValueWidget(
+          value:productVal ,
+          data: (Product product)=>  product == null
           ? EmptyPlaceholderWidget(
-              message: 'Product not found'.hardcoded,
-            )
+        message: 'Product not found'.hardcoded,
+      )
           : CustomScrollView(
-              slivers: [
-                ResponsiveSliverCenter(
-                  padding: const EdgeInsets.all(Sizes.p16),
-                  child: ProductDetails(product: product),
-                ),
-                ProductReviewsList(productId: productId),
-              ],
-            ),
+        slivers: [
+          ResponsiveSliverCenter(
+            padding: const EdgeInsets.all(Sizes.p16),
+            child: ProductDetails(product: product),
+          ),
+          ProductReviewsList(productId: productId),
+        ],
+      ),)
+
     );
   }
 }

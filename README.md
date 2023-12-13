@@ -10,5 +10,8 @@ A new Flutter project.
 https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction/
 //goroute
 https://codewithandrea.com/articles/flutter-bottom-navigation-bar-nested-routes-gorouter/
-
 //we use goRoute (subroute , Routing with parameter)
+
+//revirpod
+//family is a very useful modifier that lets you pass an argument at runtime when using a provider.
+  //provider , streamProvider , FutureProvider

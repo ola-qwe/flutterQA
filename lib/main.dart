@@ -1,13 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_qa/app.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 void main() {
   // this for test error handleer
   //  https://docs.flutter.dev/testing/errors
   registerErrorHandlers();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child:  MyApp()));
 }
 
 
