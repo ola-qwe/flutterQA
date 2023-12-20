@@ -24,7 +24,7 @@ class ProductsRepository {
   }
 
   Stream<Product> getStreamProductById(String productId) {
-    return Stream.value(_products).map(
+    return getStreamProducts().map(
         (product) => product.firstWhere((product) => product.id == productId));
   }
 }
