@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_qa/common_widgets/action_text_button.dart';
 import 'package:flutter_qa/common_widgets/responsive_center.dart';
 import 'package:flutter_qa/constants/app_sizes.dart';
+import 'package:flutter_qa/utils/async_value_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,24 +19,27 @@ class AccountScreen extends ConsumerWidget {
   Widget build(BuildContext context,WidgetRef ref) {
     final state=ref.watch(accountPageDataProvider);
    // if(state.hasError) return text()
-    ref.listen<AsyncValue<void>>(accountPageDataProvider, (previous, next) {
-      if(!state.isLoading&&state.hasError){
+    ref.listen<AsyncValue>(accountPageDataProvider, (previous, next) {
+      state.asyncValeUiWidget(context);
+  /*    if(!state.isLoading&&state.hasError){
         showExceptionAlertDialog(context: context,
             title: "error",
             exception: state.hasError);
-      }
+      }*/
     });
     return Scaffold(
       appBar: AppBar(
-        title: Text('Account'.hardcoded),
+        title:
+        state.isLoading
+          ? const CircularProgressIndicator()
+            :
+        Text('Account'.hardcoded),
         actions: [
           ActionTextButton(
             text: 'Logout'.hardcoded,
             onPressed: () async {
-             final success=await ref.read(accountPageDataProvider.notifier).signOut();
-             if(success) {
-                context.pop();
-              }
+             final success= ref.read(accountPageDataProvider.notifier).signOut();
+
             },
           ),
         ],
@@ -49,14 +53,13 @@ class AccountScreen extends ConsumerWidget {
 }
 
 /// Simple user data table showing the uid and email
-class UserDataTable extends StatelessWidget {
+class UserDataTable extends ConsumerWidget {
   const UserDataTable({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     final style = Theme.of(context).textTheme.subtitle2!;
-    // TODO: get user from auth repository
-    const user = AppUser(uid: '123', email: 'test@test.com');
+    final user = ref.watch(chaneUserStreamProvider).value;
     return DataTable(
       columns: [
         DataColumn(
@@ -75,12 +78,12 @@ class UserDataTable extends StatelessWidget {
       rows: [
         _makeDataRow(
           'uid'.hardcoded,
-          user.uid,
+          user?.uid??"",
           style,
         ),
         _makeDataRow(
           'email'.hardcoded,
-          user.email ?? '',
+          user?.email ?? '',
           style,
         ),
       ],

@@ -5,11 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class AuthRepository {
   final _authRepo=InMemoryStore<AppUser?>(null);
   Stream<AppUser?> changeAuth() => _authRepo.stream;
-  AppUser? get _currentUser => _authRepo.value;
+  AppUser? get currentUser => _authRepo.value;
 
   Future<void> signInWithEmailAndPassword(
       String email, String password) async {
-    if(_currentUser!=null)
+    if(currentUser!=null)
       {
         _creatNewAccount(email);
       }
@@ -17,13 +17,16 @@ class AuthRepository {
 
   Future<void> createAccountEmailAndPassword(
       String email, String password) async {
-    if(_currentUser!=null)
+    if(currentUser!=null)
     {
       _creatNewAccount(email);
     }
   }
 
   Future<void> signOut() async {
+    Future.delayed(const Duration(seconds: 3));
+    //throw exeption to test error msg
+    //throw Exception();
     _authRepo.value=null;
   }
   void dispose(){
