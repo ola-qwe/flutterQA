@@ -15,3 +15,5 @@ https://codewithandrea.com/articles/flutter-bottom-navigation-bar-nested-routes-
 //revirpod
 //family is a very useful modifier that lets you pass an argument at runtime when using a provider.
   //provider , streamProvider , FutureProvider
+
+  //There are other useful StreamMatchers such as emitsDone, emitsError, emitsInOrder, and many others

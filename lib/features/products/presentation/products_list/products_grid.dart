@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter_qa/common_widgets/async_value_widget.dart';
-import 'package:flutter_qa/constants/test_products.dart';
 import 'package:flutter_qa/features/products/data/products_repository.dart';
 import 'package:flutter_qa/features/products/domain/product.dart';
 import 'package:flutter_qa/features/products/presentation/products_list/product_card.dart';

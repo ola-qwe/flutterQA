@@ -9,18 +9,15 @@ class AuthRepository {
 
   Future<void> signInWithEmailAndPassword(
       String email, String password) async {
-    if(currentUser!=null)
-      {
         _creatNewAccount(email);
-      }
+     
   }
 
   Future<void> createAccountEmailAndPassword(
       String email, String password) async {
-    if(currentUser!=null)
-    {
+    
       _creatNewAccount(email);
-    }
+    
   }
 
   Future<void> signOut() async {

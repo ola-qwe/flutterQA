@@ -1,7 +1,7 @@
 import 'package:flutter_qa/features/authentication/data/auth_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AccountScreenController extends StateNotifier<AsyncValue> {
+class AccountScreenController extends StateNotifier<AsyncValue<void>> {
   AccountScreenController({required this.authRepository})
       : super(const AsyncValue.data(null));
 
@@ -24,7 +24,7 @@ class AccountScreenController extends StateNotifier<AsyncValue> {
 }
 
 final accountPageDataProvider = StateNotifierProvider.autoDispose<
-    AccountScreenController, AsyncValue>((ref) {
+    AccountScreenController, AsyncValue<void>>((ref) {
   final authRepo = ref.watch(authRepoProvider);
   return AccountScreenController(authRepository: authRepo);
 });

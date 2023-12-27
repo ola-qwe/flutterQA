@@ -1,5 +1,4 @@
 import 'package:flutter_qa/common_widgets/async_value_widget.dart';
-import 'package:flutter_qa/constants/test_products.dart';
 import 'package:flutter_qa/features/cart/presentation/add_to_cart/add_to_cart_widget.dart';
 import 'package:flutter_qa/features/not_found/empty_placeholder_widget.dart';
 import 'package:flutter_qa/features/products/data/products_repository.dart';
@@ -31,7 +30,7 @@ class ProductScreen extends ConsumerWidget {
       body:
       AsyncValueWidget(
           value:productVal ,
-          data: (Product product)=>  product == null
+          data: (Product? product)=>  product == null
           ? EmptyPlaceholderWidget(
         message: 'Product not found'.hardcoded,
       )

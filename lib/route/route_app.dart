@@ -44,6 +44,7 @@ final route = Provider<GoRouter>(
                 }
               }
             }
+          return null;
 
         },
         refreshListenable: GoRouterRefreshStream(authRepo.changeAuth()),

@@ -1,4 +1,3 @@
-import 'package:flutter_qa/constants/test_products.dart';
 import 'package:flutter_qa/features/products/data/products_repository.dart';
 import 'package:flutter_qa/features/products/domain/product.dart';
 import 'package:flutter_qa/localization/string_hardcoded.dart';
@@ -21,13 +20,13 @@ class OrderItemListTile extends ConsumerWidget {
 
     return AsyncValueWidget(
       value: productVal,
-      data: (Product product) => Padding(
+      data: (Product? product) => Padding(
         padding: const EdgeInsets.symmetric(vertical: Sizes.p8),
         child: Row(
           children: [
             Flexible(
               flex: 1,
-              child: CustomImage(imageUrl: product.imageUrl),
+              child: CustomImage(imageUrl: product!.imageUrl),
             ),
             gapW8,
             Flexible(

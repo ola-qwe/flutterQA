@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter_qa/common_widgets/alert_dialogs.dart';
 import 'package:flutter_qa/common_widgets/async_value_widget.dart';
-import 'package:flutter_qa/constants/test_products.dart';
 import 'package:flutter_qa/features/products/data/products_repository.dart';
 import 'package:flutter_qa/localization/string_hardcoded.dart';
 import 'package:flutter/material.dart';
@@ -37,13 +36,13 @@ class ShoppingCartItem extends ConsumerWidget {
 
     return AsyncValueWidget(
       value: productVal,
-      data: (Product product) => Padding(
+      data: (Product ?product) => Padding(
         padding: const EdgeInsets.symmetric(vertical: Sizes.p8),
         child: Card(
           child: Padding(
             padding: const EdgeInsets.all(Sizes.p16),
             child: ShoppingCartItemContents(
-              product: product,
+              product: product!,
               item: item,
               itemIndex: itemIndex,
               isEditable: isEditable,

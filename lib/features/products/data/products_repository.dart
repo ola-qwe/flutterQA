@@ -1,31 +1,44 @@
 import 'package:flutter_qa/constants/test_products.dart';
 import 'package:flutter_qa/features/products/domain/product.dart';
+import 'package:flutter_qa/utils/delay.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProductsRepository {
+  ProductsRepository({this.isDelay=true});
+  final bool isDelay;
+
   final _products = kTestProducts;
 
   List<Product> getProducts() {
     return _products;
   }
 
-  Product getProductById(String productId) {
-    return _products.firstWhere((product) => product.id == productId);
+  Product? getProductById(String productId) {
+    return _getProductById(_products, productId);
   }
 
   Future<List<Product>> getFutureProducts() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await delay(isDelay);
     return Future.value(_products);
   }
 
   Stream<List<Product>> getStreamProducts() async* {
-    await Future.delayed(const Duration(seconds: 2));
+    await delay(isDelay);
     yield _products;
   }
 
-  Stream<Product> getStreamProductById(String productId) {
-    return getStreamProducts().map(
-        (product) => product.firstWhere((product) => product.id == productId));
+  Stream<Product?> getStreamProductById(String productId) {
+    return getStreamProducts()
+        .map((product) => _getProductById(product, productId));
+  }
+
+  static Product? _getProductById(List<Product> products, String id) {
+    try {
+      return
+      products.firstWhere((product) => product.id == id);
+    } catch (e) {
+      return null;
+    }
   }
 }
 
@@ -56,7 +69,8 @@ final productFutureProvider = FutureProvider.autoDispose<List<Product>>(
   },
 );
 
-final productDetailsStreamProvider = StreamProvider.autoDispose.family<Product, String>(
+final productDetailsStreamProvider =
+    StreamProvider.autoDispose.family<Product?, String>(
   (ref, id) {
     final repo = ref.watch(productRepoProvider);
     return repo.getStreamProductById(id);

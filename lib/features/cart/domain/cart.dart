@@ -1,7 +1,6 @@
 
 import 'package:flutter_qa/features/products/domain/product.dart';
 import 'package:flutter_qa/features/cart/domain/item.dart';
-import 'package:flutter_qa/features/products/domain/product.dart';
 
 /// Model class representing the shopping cart contents.
 class Cart {
