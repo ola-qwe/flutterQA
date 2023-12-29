@@ -15,7 +15,6 @@ class AuthRepository {
 
   Future<void> createAccountEmailAndPassword(
       String email, String password) async {
-    
       _creatNewAccount(email);
     
   }
